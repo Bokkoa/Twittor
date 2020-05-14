@@ -1,6 +1,20 @@
+
+//obtener url
+var url = window.location.href;
+
+//asignar la location de sw
+var swLocation = "/Twittor/sw.js";
+
 // Service worker
 if( navigator.serviceWorker ){
-    navigator.serviceWorker.register('/sw.js');
+
+    //si es localhost cambiara la direccion
+    //esta aplicada para github pages
+    if(url.includes('localhost') ){
+        swLocation = '/sw.js';
+    }
+
+    navigator.serviceWorker.register(swLocation);
 }
 
 // Referencias de jQuery
